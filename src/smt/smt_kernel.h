@@ -249,6 +249,7 @@ namespace smt {
            \warning We should not use this method
         */
         context & get_context();
+        expr * get_quantifier_instance();
     };
 };
 

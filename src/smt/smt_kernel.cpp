@@ -68,6 +68,10 @@ namespace smt {
         expr * const * get_formulas() const {
             return m_kernel.get_asserted_formulas();
         }
+
+        expr * get_quantifier_instance() {
+            return m_kernel.quantifier_instance.get();
+        }
         
         bool reduce() {
             return m_kernel.reduce_assertions();
@@ -348,6 +352,10 @@ namespace smt {
 
     context & kernel::get_context() {
         return m_imp->m_kernel;
+    }
+
+    expr * kernel::get_quantifier_instance() {
+        return m_imp->get_quantifier_instance();
     }
 
 };

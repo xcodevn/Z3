@@ -215,6 +215,8 @@ namespace smt {
         expr_ref instance(m_manager);
         m_subst(q, num_bindings, bindings, instance);
 
+        m_context.quantifier_instance = instance;
+
         TRACE("qi_queue", tout << "new instance:\n" << mk_pp(instance, m_manager) << "\n";);
         TRACE("qi_queue_instance", tout << "new instance:\n" << mk_pp(instance, m_manager) << "\n";);
         expr_ref  s_instance(m_manager);

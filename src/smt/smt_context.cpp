@@ -73,6 +73,7 @@ namespace smt {
         m_conflict_resolution(mk_conflict_resolution(m, *this, m_dyn_ack_manager, p, m_assigned_literals, m_watches)),
         m_unsat_proof(m),
         m_unsat_core(m),
+        quantifier_instance(m),
 #ifdef Z3DEBUG
         m_trail_enabled(true),
 #endif
@@ -3029,6 +3030,7 @@ namespace smt {
     }
 
     lbool context::check(unsigned num_assumptions, expr * const * assumptions, bool reset_cancel) {
+        quantifier_instance = 0;
         m_stats.m_num_checks++;
         TRACE("check_bug", tout << "STARTING check(num_assumptions, assumptions)\n";
               tout << "inconsistent: " << inconsistent() << ", m_unsat_core.empty(): " << m_unsat_core.empty() << "\n";

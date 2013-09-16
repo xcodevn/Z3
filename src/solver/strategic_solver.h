@@ -149,6 +149,8 @@ public:
     virtual void get_labels(svector<symbol> & r);
     virtual void set_cancel(bool f);
     virtual void set_progress_callback(progress_callback * callback);
+    virtual expr * get_quantifier_instance();
+
 };
 
 #endif

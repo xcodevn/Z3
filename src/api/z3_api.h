@@ -4262,6 +4262,15 @@ END_MLAPI_EXCLUDE
     Z3_ast Z3_API Z3_get_quantifier_no_pattern_ast(__in Z3_context c, __in Z3_ast a, unsigned i);
 
     /**
+       \brief Return an instance of any quantifier
+
+       \pre Nope
+
+       def_API('Z3_get_quantifier_instance', AST, (_in(CONTEXT), _in(SOLVER)))
+    */
+    Z3_ast Z3_API Z3_get_quantifier_instance(__in Z3_context c, __in Z3_solver s);
+
+    /**
        \brief Return number of bound variables of quantifier.
        
        \pre Z3_get_ast_kind(a) == Z3_QUANTIFIER_AST

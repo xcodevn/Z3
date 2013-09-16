@@ -89,6 +89,7 @@ namespace api {
 
         event_handler *            m_interruptable; // Reference to an object that can be interrupted by Z3_interrupt
     public:
+        expr_ref quantifier_instance;
         // Scoped obj for setting m_interruptable
         class set_interruptable {
             context & m_ctx;

@@ -99,6 +99,7 @@ namespace api {
         m_datalog_util(m_manager),
         m_last_result(m_manager),
         m_ast_trail(m_manager),
+        quantifier_instance(m_manager),
         m_replay_stack() {
 
         m_solver     = 0;

@@ -519,6 +519,13 @@ void strategic_solver::set_progress_callback(progress_callback * callback) {
         m_inc_solver->set_progress_callback(callback);
 }
 
+expr * strategic_solver::get_quantifier_instance() {
+    if (m_inc_solver)
+        return m_inc_solver->get_quantifier_instance();
+    else
+        return 0;
+}
+
 void strategic_solver::display(std::ostream & out) const {
     if (m_manager) {
         unsigned num = get_num_assertions();

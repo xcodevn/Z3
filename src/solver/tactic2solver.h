@@ -86,6 +86,7 @@ public:
     virtual expr * get_assertion(unsigned idx) const;
 
     virtual void display(std::ostream & out) const;
+    virtual expr * get_quantifier_instance();
 };
 
 class tactic2solver : public tactic2solver_core {

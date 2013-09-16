@@ -118,6 +118,10 @@ namespace smt {
                 r.push_back(m_context->get_unsat_core_expr(i));
         }
 
+        virtual expr * get_quantifier_instance() {
+            return m_context->get_quantifier_instance();
+        }
+
         virtual void get_model(model_ref & m) {
             SASSERT(m_context);
             m_context->get_model(m);
