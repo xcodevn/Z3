@@ -118,8 +118,11 @@ namespace smt {
                 r.push_back(m_context->get_unsat_core_expr(i));
         }
 
-        virtual expr * get_quantifier_instance() {
-            return m_context->get_quantifier_instance();
+        virtual void get_quantifier_instances(ptr_vector<expr> & r) {
+            SASSERT(m_context);
+            unsigned sz = m_context->get_quantifier_instances_size();
+            for (unsigned i = 0; i < sz; i++)
+                r.push_back(m_context->get_quantifier_instance(i));
         }
 
         virtual void get_model(model_ref & m) {

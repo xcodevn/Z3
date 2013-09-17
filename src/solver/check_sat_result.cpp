@@ -35,6 +35,10 @@ void simple_check_sat_result::get_unsat_core(ptr_vector<expr> & r) {
         r.append(m_core.size(), m_core.c_ptr()); 
 }
  
+void simple_check_sat_result::get_quantifier_instances(ptr_vector<expr> & r) { 
+        /* Do nothing ; */
+}
+
 void simple_check_sat_result::get_model(model_ref & m) { 
     if (m_status != l_false) 
         m = m_model; 

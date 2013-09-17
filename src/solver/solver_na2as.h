@@ -43,7 +43,6 @@ public:
     virtual void pop(unsigned n);
     virtual unsigned get_scope_level() const;
     virtual void reset();
-    virtual expr * get_quantifier_instance() { printf("SOLVE_NA2AS\n");return 0; }
 protected:
     virtual void init_core(ast_manager & m, symbol const & logic) = 0;
     virtual lbool check_sat_core(unsigned num_assumptions, expr * const * assumptions) = 0;

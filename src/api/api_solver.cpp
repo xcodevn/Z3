@@ -308,13 +308,19 @@ extern "C" {
         Z3_CATCH_RETURN(0);
     }
 
-    Z3_ast Z3_API Z3_get_quantifier_instance(Z3_context c, Z3_solver s) {
+    Z3_ast_vector Z3_API Z3_get_quantifier_instances(Z3_context c, Z3_solver s) {
         Z3_TRY;
-        LOG_Z3_get_quantifier_instance(c, s);
-        RESET_ERROR_CODE(); init_solver(c, s);
-        expr * ex = to_solver_ref(s)->get_quantifier_instance();
-        mk_c(c)->save_ast_trail(ex);
-        RETURN_Z3(of_ast(ex));
+        LOG_Z3_get_quantifier_instances(c, s);
+        RESET_ERROR_CODE(); 
+        init_solver(c, s);
+        Z3_ast_vector_ref * v = alloc(Z3_ast_vector_ref, mk_c(c)->m());
+        mk_c(c)->save_object(v);
+        ptr_vector<expr> ins;
+        to_solver_ref(s)->get_quantifier_instances(ins);
+        for (unsigned i = 0; i < ins.size(); i++) {
+            v->m_ast_vector.push_back(ins[i]);
+        }
+        RETURN_Z3(of_ast_vector(v));
         Z3_CATCH_RETURN(0);
     }
 

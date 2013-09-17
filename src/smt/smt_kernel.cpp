@@ -69,8 +69,12 @@ namespace smt {
             return m_kernel.get_asserted_formulas();
         }
 
-        expr * get_quantifier_instance() {
-            return m_kernel.quantifier_instance.get();
+        expr * get_quantifier_instance(int idx) {
+                return m_kernel.quantifier_instances[idx].get();
+        }
+
+        unsigned get_quantifier_instances_size() {
+                return m_kernel.quantifier_instances.size();
         }
         
         bool reduce() {
@@ -274,6 +278,14 @@ namespace smt {
         return m_imp->get_proof();
     }
 
+    expr * kernel::get_quantifier_instance(int idx) {
+        return m_imp->get_quantifier_instance(idx);
+    }
+
+    unsigned kernel::get_quantifier_instances_size() {
+        return m_imp->get_quantifier_instances_size();
+    }
+
     unsigned kernel::get_unsat_core_size() const {
         return m_imp->get_unsat_core_size();
     }
@@ -353,9 +365,4 @@ namespace smt {
     context & kernel::get_context() {
         return m_imp->m_kernel;
     }
-
-    expr * kernel::get_quantifier_instance() {
-        return m_imp->get_quantifier_instance();
-    }
-
 };

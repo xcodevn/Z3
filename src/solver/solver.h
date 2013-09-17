@@ -151,7 +151,6 @@ public:
        \brief Return the assertion at position idx in the assertion stack.
     */
     virtual expr * get_assertion(unsigned idx) const;
-    virtual expr * get_quantifier_instance() = 0;
 
     /**
        \brief Display the content of this solver.

@@ -249,7 +249,8 @@ namespace smt {
            \warning We should not use this method
         */
         context & get_context();
-        expr * get_quantifier_instance();
+        expr * get_quantifier_instance(int idx);
+        unsigned get_quantifier_instances_size();
     };
 };
 

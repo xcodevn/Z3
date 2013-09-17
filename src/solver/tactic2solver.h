@@ -75,6 +75,7 @@ public:
 
     virtual void collect_statistics(statistics & st) const;
     virtual void get_unsat_core(ptr_vector<expr> & r);
+    virtual void get_quantifier_instances(ptr_vector<expr> & r) {}
     virtual void get_model(model_ref & m);
     virtual proof * get_proof();
     virtual std::string reason_unknown() const;
@@ -86,7 +87,6 @@ public:
     virtual expr * get_assertion(unsigned idx) const;
 
     virtual void display(std::ostream & out) const;
-    virtual expr * get_quantifier_instance();
 };
 
 class tactic2solver : public tactic2solver_core {

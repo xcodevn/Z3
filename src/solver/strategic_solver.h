@@ -143,13 +143,13 @@ public:
     virtual unsigned get_scope_level() const;
     virtual lbool check_sat(unsigned num_assumptions, expr * const * assumptions);
     virtual void get_unsat_core(ptr_vector<expr> & r);
+    virtual void get_quantifier_instances(ptr_vector<expr> & r);
     virtual void get_model(model_ref & m);
     virtual proof * get_proof();
     virtual std::string reason_unknown() const;
     virtual void get_labels(svector<symbol> & r);
     virtual void set_cancel(bool f);
     virtual void set_progress_callback(progress_callback * callback);
-    virtual expr * get_quantifier_instance();
 
 };
 

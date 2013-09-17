@@ -215,7 +215,7 @@ namespace smt {
         expr_ref instance(m_manager);
         m_subst(q, num_bindings, bindings, instance);
 
-        m_context.quantifier_instance = instance;
+
 
         TRACE("qi_queue", tout << "new instance:\n" << mk_pp(instance, m_manager) << "\n";);
         TRACE("qi_queue_instance", tout << "new instance:\n" << mk_pp(instance, m_manager) << "\n";);
@@ -223,6 +223,10 @@ namespace smt {
         proof_ref pr(m_manager);
         simplifier & simp = m_context.get_simplifier();
         simp(instance, s_instance, pr);
+
+        std::cout << "new s_instance:\n" << mk_pp(s_instance, m_manager) << "\n";
+        fflush(stdout);
+        m_context.quantifier_instances.push_back(s_instance);
         TRACE("qi_queue_bug", tout << "new instance after simplification:\n" << mk_pp(s_instance, m_manager) << "\n";);
         if (m_manager.is_true(s_instance)) {
             TRACE("checker", tout << "reduced to true, before:\n" << mk_ll_pp(instance, m_manager););

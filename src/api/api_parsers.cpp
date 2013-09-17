@@ -272,6 +272,11 @@ extern "C" {
             for (unsigned i = 0; i < sz; i++)
                 r.push_back(ctx().get_unsat_core_expr(i));            
         }
+        virtual void get_quantifier_instances(ptr_vector<expr> & r) {
+            unsigned sz = ctx().get_quantifier_instances_size();
+            for (unsigned i = 0; i < sz; i++)
+                r.push_back(ctx().get_quantifier_instance(i));            
+        }
         virtual void get_model(model_ref & m) { ctx().get_model(m); }
         virtual proof * get_proof() { return ctx().get_proof(); }
         virtual std::string reason_unknown() const { return ctx().last_failure_as_string(); }

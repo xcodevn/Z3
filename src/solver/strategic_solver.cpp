@@ -467,6 +467,11 @@ void strategic_solver::set_cancel(bool f) {
     }
 }
 
+void strategic_solver::get_quantifier_instances(ptr_vector<expr> & r) {
+    if (m_inc_solver)
+        m_inc_solver->get_quantifier_instances(r);
+}
+
 void strategic_solver::get_unsat_core(ptr_vector<expr> & r) {
     TRACE("strategic_solver", tout << "get_unsat_core, m_use_inc_solver_results: " << m_use_inc_solver_results << "\n";);
     if (m_use_inc_solver_results) {
@@ -517,13 +522,6 @@ void strategic_solver::set_progress_callback(progress_callback * callback) {
     m_callback = callback; 
     if (m_inc_solver)
         m_inc_solver->set_progress_callback(callback);
-}
-
-expr * strategic_solver::get_quantifier_instance() {
-    if (m_inc_solver)
-        return m_inc_solver->get_quantifier_instance();
-    else
-        return 0;
 }
 
 void strategic_solver::display(std::ostream & out) const {

@@ -48,6 +48,7 @@ public:
     lbool status() const { return m_status; }
     virtual void collect_statistics(statistics & st) const = 0;
     virtual void get_unsat_core(ptr_vector<expr> & r) = 0;
+    virtual void get_quantifier_instances(ptr_vector<expr> & r) = 0;
     virtual void get_model(model_ref & m) = 0;
     virtual proof * get_proof() = 0;
     virtual std::string reason_unknown() const = 0;
@@ -68,6 +69,7 @@ struct simple_check_sat_result : public check_sat_result {
     virtual ~simple_check_sat_result();
     virtual void collect_statistics(statistics & st) const;
     virtual void get_unsat_core(ptr_vector<expr> & r);
+    virtual void get_quantifier_instances(ptr_vector<expr> & r);
     virtual void get_model(model_ref & m);
     virtual proof * get_proof();
     virtual std::string reason_unknown() const;

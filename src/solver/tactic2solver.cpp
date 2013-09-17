@@ -192,10 +192,6 @@ proof * tactic2solver_core::get_proof() {
         return 0;
 }
 
-expr * tactic2solver_core::get_quantifier_instance() {
-    return 0;
-}
-
 std::string tactic2solver_core::reason_unknown() const {
     if (m_ctx->m_result.get())
         return m_ctx->m_result->reason_unknown();

@@ -65,7 +65,7 @@ namespace smt {
         friend class model_generator;
     public:
         statistics                  m_stats;
-        expr_ref quantifier_instance;
+        expr_ref_vector quantifier_instances;
 
         std::ostream& display_last_failure(std::ostream& out) const;
         std::string last_failure_as_string() const;

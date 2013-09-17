@@ -4266,9 +4266,9 @@ END_MLAPI_EXCLUDE
 
        \pre Nope
 
-       def_API('Z3_get_quantifier_instance', AST, (_in(CONTEXT), _in(SOLVER)))
+       def_API('Z3_get_quantifier_instances', AST_VECTOR, (_in(CONTEXT), _in(SOLVER)))
     */
-    Z3_ast Z3_API Z3_get_quantifier_instance(__in Z3_context c, __in Z3_solver s);
+    Z3_ast_vector Z3_API Z3_get_quantifier_instances(__in Z3_context c, __in Z3_solver s);
 
     /**
        \brief Return number of bound variables of quantifier.
